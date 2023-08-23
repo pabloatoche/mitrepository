@@ -7,20 +7,10 @@ on:
       - 'Users_files/**'
 jobs:
   push-dev:
-    runs-on: ubuntu-latest
-    environment: DEV
-    steps:
-      - id: deploy
-        uses: ./.github/workflows/deploy.yaml
-        with:
-          ENV_NAME: DEV
-      - run: exit 0
+    uses: ./.github/workflows/deploy.yaml
+    with:
+      ENV_NAME: DEV
   push-qa:
-    runs-on: ubuntu-latest
-    environment: QA
-    steps:
-      - id: deploy
-        uses: ./.github/workflows/deploy.yaml
-        with:
-          ENV_NAME: QA
-      - run: exit 0
+    uses: ./.github/workflows/deploy.yaml
+    with:
+      ENV_NAME: QA
