@@ -10,7 +10,9 @@ jobs:
     uses: ./.github/workflows/deploy.yaml
     with:
       ENV_NAME: DEV
+    secrets: inherit
   push-qa:
     uses: ./.github/workflows/deploy.yaml
     with:
       ENV_NAME: QA
+    secrets: inherit
