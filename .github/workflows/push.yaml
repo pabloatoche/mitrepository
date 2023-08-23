@@ -1,4 +1,4 @@
-name: push-casc-terraform
+name: push
 on:
   push:
     branches:
@@ -6,17 +6,15 @@ on:
     paths:
       - 'Users_files/**'
 jobs:
-  push-casc-terraform:
+  push-dev:
     runs-on: ubuntu-latest
     environment: DEV
-    permissions:
-      id-token: write
-      contents: read
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: echo
-        working-directory: Users_files
-        run: |
-          echo ${{ vars.VAR_1 }}
+      - uses: ./.github/workflows/deploy.yaml
+      - run: exit 0
+  push-qa:
+    runs-on: ubuntu-latest
+    environment: QA
+    steps:
+      - uses: ./.github/workflows/deploy.yaml
       - run: exit 0
