@@ -1,0 +1,25 @@
+name: verify
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - edited
+      - reopened
+    paths:
+      - 'Users_files/**'
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    environment: DEV
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: echo
+        run: |
+          echo ${{ vars.VAR_1 }}
+      - run: exit 0
