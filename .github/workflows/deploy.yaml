@@ -18,4 +18,8 @@ jobs:
         working-directory: Users_files
         run: |
           echo ${{ vars.VAR_1 }}
+      - name: echo2
+        working-directory: Users_files
+        run: |
+          echo ${{ vars.VAR_S_1 }}
       - run: exit 0
