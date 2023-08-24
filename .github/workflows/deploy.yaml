@@ -4,6 +4,11 @@ on:
       ENV_NAME:
         required: true
         type: string
+
+defaults:
+  run:
+    working-directory: Users_files
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -15,11 +20,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: echo
-        working-directory: Users_files
         run: |
           echo ${{ vars.VAR_1 }}
       - name: echo2
-        working-directory: Users_files
         run: |
           echo ${{ secrets.VAR_S_1 }}
+      - name: echo3
+        run: |
+          ls -la
+      - name: echo4
+        working-directory: Users_files/tmp
+        run: |
+          ls -la
+      - run: exit 0
       - run: exit 0
