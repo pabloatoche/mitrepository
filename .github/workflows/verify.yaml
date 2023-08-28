@@ -24,15 +24,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: echo
-        run: |
-          echo ${{ vars.VAR_1 }}
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
           role-to-assume: arn:aws:iam::${{ vars.AWS_ACCOUNT_ID }}:role/GitHubAction-AssumeRoleWithAction
-#          role-session-name: GitHub_to_AWS_via_FederatedOIDC
+          role-session-name: samplerolesession
           aws-region: ${{ vars.AWS_REGION }}
+      - name: echo
+        run: |
+          echo ${{ vars.VAR_1 }}
       - name: Sts GetCallerIdentity
         run: |
           aws sts get-caller-identity
